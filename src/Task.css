@@ -1,3 +1,6 @@
-task__list {
-    text-align: center;
+.center {
+    align-items: center;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
 }

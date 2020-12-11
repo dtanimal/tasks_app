@@ -4,6 +4,7 @@ import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
 import Task from './Task';
 import db from './firebase';
 import firebase from 'firebase';
+import './Task.css';
 
 
 
@@ -14,7 +15,7 @@ function App() {
   // adds to array without refreshing page. refresh clears the state of the site
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState('');
-
+  
   // when app loads, listen to db and fetch new tasks as they get added/removed
   // useEffect runs once app loads....study this
   useEffect(() => {
@@ -48,25 +49,28 @@ function App() {
   // added formcontrol which puts text 'write a task' inside the input field
   return (
     <div className="App">
-      <h1>Welcome!</h1>
+      <h1>Chores For The Day</h1>
       
       <form>
         <FormControl>
           <InputLabel>Write a Task</InputLabel>
           <Input value={input} onChange={event => setInput(event.target.value)}/>
         </FormControl>
-
         <Button disabled={!input} type="submit" onClick={addTask} color="primary" variant="contained">Add Task</Button>
       </form>
 
-
-      <ul>
-        {tasks.map(tasks => (  // tasks.map loops thru tasks array. task is each item in array. arrow => parenthesis to return each {task}
-          <Task tasks={tasks}/> // calls the Task.js component
+      
+        <div >
+          <ul className='center'>
+          {tasks.map(tasks => (  // tasks.map loops thru tasks array. task is each item in array. arrow => parenthesis to return each {task}
+            <Task tasks={tasks}/> // calls the Task.js component
           //<li>{tasks}</li> 
         ))}
-      </ul>
+          </ul>
+        </div>
+      
     </div>
+    
   );
 }
 

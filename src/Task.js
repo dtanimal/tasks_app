@@ -7,11 +7,12 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 const useStyles = makeStyles((theme) => ({
     paper: {
       position: 'absolute',
-      width: 400,
+      width: 300,
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
+ 
     },
   }));
   
@@ -33,7 +34,7 @@ function Task(props) {
     return (
         <>
         <List>
-            <ListItem >
+            <ListItem>
             <ListItemAvatar>
                 <Avatar>
                 </Avatar>
