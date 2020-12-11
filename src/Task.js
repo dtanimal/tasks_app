@@ -3,6 +3,7 @@ import { ListItem, List, ListItemText, ListItemAvatar, Avatar, Modal, makeStyles
 import './Task.css';
 import db from './firebase';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -41,7 +42,7 @@ function Task(props) {
             </ListItemAvatar>
                 <ListItemText primary={props.tasks.tasks} secondary="Task" />
             </ListItem>
-            <button onClick={e => setOpen(true)}>Edit</button>
+            <EditIcon onClick={e => setOpen(true)}>Edit</EditIcon>
             <DeleteForeverIcon onClick={event => db.collection('tasks').doc(props.tasks.id).delete()}/>
         </List>
 
