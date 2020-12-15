@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { ListItem, List, ListItemText, ListItemAvatar, Avatar, Modal, makeStyles, Button } from '@material-ui/core';
+import { ListItem, List, ListItemText, Modal, makeStyles, Button } from '@material-ui/core';
 import './Task.css';
 import db from './firebase';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
@@ -8,7 +8,7 @@ import EditIcon from '@material-ui/icons/Edit';
 const useStyles = makeStyles((theme) => ({
     paper: {
       position: 'absolute',
-      width: 300,
+      width: 320,
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
@@ -36,11 +36,7 @@ function Task(props) {
         <>
         <List>
             <ListItem>
-            <ListItemAvatar>
-                <Avatar>
-                </Avatar>
-            </ListItemAvatar>
-                <ListItemText primary={props.tasks.tasks} secondary="Task" />
+                <ListItemText primary={props.tasks.tasks}/>
             </ListItem>
             <EditIcon onClick={e => setOpen(true)}>Edit</EditIcon>
             <DeleteForeverIcon onClick={event => db.collection('tasks').doc(props.tasks.id).delete()}/>
@@ -52,7 +48,7 @@ function Task(props) {
     >
         <form>
             <div className={classes.paper}>
-                <h1>Update Task Below</h1>
+                <h1>Update Chore Below</h1>
                 <input placeholder={props.tasks.tasks} value={input} onChange={event => setInput(event.target.value)}/>
                 <Button type='submit' onClick={updateTask}>Update</Button>
             </div>

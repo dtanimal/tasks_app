@@ -6,8 +6,6 @@ import db from './firebase';
 import firebase from 'firebase';
 import './Task.css';
 
-
-
 function App() {
   // setting up a state in const tasks in a array being called by set[variable name]
   // useState([]); starts out with an empty array
@@ -32,7 +30,6 @@ function App() {
   // ...tasks previously already exists then the input is what you type in you and is pushed at the end of the ...tasks
   const addTask = (event) => {
     event.preventDefault();   // stops the REFRESHING problem when you submit/add tasks
-
     // adds input into firebase db as you type
     db.collection('tasks').add({
       tasks: input,
@@ -42,7 +39,7 @@ function App() {
     setTasks([...tasks, input]);
     setInput(''); // clears input every time we submit
   }
-
+  
 
   // added <form> so that we can press enter to add tasks. also add a type="submit" to the button so it knows
   // disabled={!input} makes it so cannot add an empty task 
@@ -53,21 +50,19 @@ function App() {
       
       <form>
         <FormControl>
-          <InputLabel>Write a Task</InputLabel>
+          <InputLabel><b>Enter Chores</b></InputLabel>
           <Input value={input} onChange={event => setInput(event.target.value)}/>
         </FormControl>
-        <Button disabled={!input} type="submit" onClick={addTask} color="primary" variant="contained">Add Task</Button>
+        <Button disabled={!input} type="submit" onClick={addTask} color="primary" variant="contained"><b>Add</b></Button>
       </form>
 
-      
-        <div >
-          <ul className='center'>
+      <div className='center'> 
+        <ul>
           {tasks.map(tasks => (  // tasks.map loops thru tasks array. task is each item in array. arrow => parenthesis to return each {task}
-            <Task tasks={tasks}/> // calls the Task.js component
-          //<li>{tasks}</li> 
-        ))}
-          </ul>
-        </div>
+           <Task tasks={tasks}/> // calls the Task.js component
+          ))}
+        </ul>
+      </div>
       
     </div>
     
